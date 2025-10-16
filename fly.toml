@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for hng-stage-0 on 2025-10-16T18:57:43Z
+# fly.toml app configuration file generated for hng-stage-0 on 2025-10-16T19:22:42Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,9 +7,6 @@ app = 'hng-stage-0'
 primary_region = 'iad'
 
 [build]
-
-[env]
-  PORT = '8080'
 
 [http_service]
   internal_port = 8080
