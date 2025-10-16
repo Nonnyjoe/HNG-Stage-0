@@ -24,6 +24,7 @@ This guide will help you test the application endpoints and features. The server
 
    - Duplicate [`.env.example`](.env.example) into a new file named `.env`.
    - Fill in the required values:
+     - `URL` - URL endpoint to run your server
      - `PORT` – Port on which the server will run.
      - `EMAIL` – Email address that will be returned by the `/me` endpoint.
      - `NAME` – Full name that will be returned by the `/me` endpoint.
@@ -32,6 +33,7 @@ This guide will help you test the application endpoints and features. The server
    Example `.env` file:
 
    ``` javascript
+      URL= 127.0.0.1
       PORT=8080
       EMAIL=test@example.com
       NAME="Test User"

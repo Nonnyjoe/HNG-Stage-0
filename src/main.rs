@@ -24,12 +24,13 @@ async fn main() -> std::io::Result<()> {
     let config = Config::init();
 
     let port: u16 = config.port.parse().expect("PORT must be i16 type");
+    let url: String = config.url.clone().parse().expect("URL must be String type");
 
     let app_state = web::Data::new(AppState {
         env: config.clone(),
     });
 
-    println!("Server Started and running on 127.0.0.1:{}......", port);
+    println!("Server Started and running on {}:{}......", url, port);
     
     HttpServer::new(move || {
         let cors = Cors::default()
@@ -48,7 +49,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(cors)
             .wrap(Logger::default())
     })
-    .bind(("127.0.0.1", port))?
+    .bind((url, port))?
     .run()
     .await
 }
