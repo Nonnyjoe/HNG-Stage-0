@@ -29,17 +29,17 @@ async fn me(_data: web::Data<AppState>) -> impl Responder {
                         fact = Some(user_fact.clone());
                         println!("Random Cat Fact: {}", user_fact);
                     } else {
-                        println!("No facts found in the response");
-                        error = "No facts found in the response".to_string();
+                        println!("No facts found in the response: /n{:?}", json);
+                        error = format!("No facts found in the response, because: {:?}", json).to_string();
                     }
                 } else {
-                    println!("No facts found in the response");
-                    error = "No facts found in the response".to_string();
+                    println!("No facts found in the response: /n{:?}", json);
+                    error = format!("No facts found in the response, because: {:?}", json).to_string();
                 }
             }
             Err(_) =>{ println!("Failed to parse JSON response"); fact = None; error = "Failed to parse JSON response".to_string()}
         },
-        Err(_) =>{ println!("Failed to fetch cat facts"); fact = None; error = "Failed to fetch cat facts".to_string()}
+        Err(e) =>{ println!("Failed to fetch cat facts {:?}", e); fact = None; error = "Failed to fetch cat facts".to_string()}
     };
 
     if !fact.is_none() {
